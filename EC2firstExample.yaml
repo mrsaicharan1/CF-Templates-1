@@ -1,21 +1,7 @@
 # Setup Basic EC2 instance
 # Note, this is a basic use of Cloudformation with disregard for Security Group Access
 # You should always update Security Group Access with your own IP Address to ensure your instances security.
-#
-# How to validate template
-# aws cloudformation validate-template --template-body file:////path//cloudformation//EC2//ec2-basic.yml
-#
-# How to Create/Update stack 
-# aws cloudformation create-stack --stack-name myec2basic --template-body file:////path//cloudformation//EC2//ec2-basic.yml
-# aws cloudformation update-stack --stack-name myec2basic --template-body file:////path//cloudformation//EC2//ec2-basic.yml
-#
-# How to Delete stack
-# aws cloudformation delete-stack --stack-name myec2basic
-#
-# Example with parameter
-# aws cloudformation create-stack  --stack-name startmyinstance  
-#    --template-body file://home/ec2-user/templates/startmyinstance.json 
-#    --parameters  ParameterKey=KeyPairName,ParameterValue=MyKey ParameterKey=InstanceType,ParameterValue=t1.micro   
+ 
 ---
 AWSTemplateFormatVersion: "2010-09-09"
 Description: "Example EC2 Set-up"
@@ -91,7 +77,7 @@ Resources:
           yum update -y
           service httpd start
           chkconfig httpd on
-          echo "<html><h1>Hello Cloud Gurus!</h1></html>" > /var/www/html/index.html
+          echo "<html><h1>Successfully Created EC2 instance via CF</h1></html>" > /var/www/html/index.html
 # We're allowing any ip address to access port 22 (temporary access)
 # You should replace with your own ip for security purpose.
   InstanceSecurityGroup:
